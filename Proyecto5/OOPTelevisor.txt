@@ -1,15 +1,7 @@
-print('''DISPLEY DIGITAL DE CONTROL REMOTO
-                                    "ON"
-                                    "OFF"
-                                    "SUBIR CANAL"
-                                    "BAJAR CANAL"
-                                    "SUBIR VOLUMEN"
-                                    "BAJAR VOLUMEN"\n''')
-
 class Televisor():
     def __init__(self):
         self.apagado=True
-        self.canal_actual=1
+        self.canal_actual=0
         self.volumen=10
     def Prender(self):
             if self.apagado:
@@ -18,40 +10,71 @@ class Televisor():
             return self.apagado
     def Menu(self):
              if self.apagado:
-                 print('El televisor se ha prendido, CANAL TV-CABLE 1: Presione opcion del menu.')
+                 print('El televisor se ha prendido, Presione opcion del menu.')
     def Apagar(self):
-             if self.apagado==True:
+             if self.apagado==False:
                  print('El televisor se ha apagado')
-
     def Subir_Canal(self):
-            self.canal_actual=1
             self.canal_actual=self.canal_actual + 1
-            print('Nuevo CANAL TV-CABLE', self.canal_actual)
+            print('CANAL TV-CABLE', self.canal_actual)
+
+    def Bajar_Canal(self):
+           self.canal_actual=self.canal_actual -1
+           print('CANAL TV-CABLE', self.canal_actual)
+
     def Subir_Volumen(self):
             self.volumen=10
             self.volumen=self.volumen + 10
             print('Volumen aumento a:',self.volumen)
-            Mas_Volumen=str(input('mas volumen?: si - no:  '))
-            if Mas_Volumen=='si':
+            Mas_Volumen=str(input('mas volumen?: Si - No:  '))
+            if Mas_Volumen=='Si':
                 self.volumen=self.volumen + 20
                 print('Volumen Maximo: ',self.volumen)
+    def Bajar_Volumen(self):
+            self.volumen=10
+            self.volumen=self.volumen - 5
+            print('El volumen ha bajado a:', self.volumen)
+            Menos_Volumen=str(input('Desea bajar mas el volumen?: Si - No  '))
+            if Menos_Volumen=='Si':
+                self.volumen = self.volumen - 3
+                print('Volumen minimo:', self.volumen)
+    def Salir(self):
+        print('El televisor se aparagara en 10 segundos.')
 
-Control_Remoto=Televisor()
-Control_Remoto.Prender()
-
-Accion1=str(input("OPCION:"))
-
-if   Accion1=='ON'or Accion1=='on':
-        Control_Remoto.Menu()
-
-Accion2=str(input("OPCION:"))
 
 
-if Accion2=='SUBIR CANAL'or Accion2=='subir canal':
-        Control_Remoto.Subir_Canal()
+def run():
+    Control_Remoto=Televisor()
+    Control_Remoto.Prender()
 
-elif Accion2== 'SUBIR VOLUMEN'or 'subir volumen':
-        Control_Remoto.Subir_Volumen()
+    while True:
+        print('''DISPLEY DIGITAL DE CONTROL REMOTO
+                                           a- "ON"                                
+                                           b- "SUBIR CANAL"
+                                           c- "BAJAR CANAL"
+                                           d- "SUBIR VOLUMEN"
+                                           e- "BAJAR VOLUMEN
+                                           f- "Salir"\n''')
 
-elif Accion2=='OFF'or'off':
-        Control_Remoto.Apagar()
+        Accion = str(input('Elija una opcion: \n'))
+
+        if Accion == "On":
+            Control_Remoto.Menu()
+
+        elif Accion == "Subir Canal":
+            Control_Remoto.Subir_Canal()
+        elif Accion == 'Bajar Canal':
+            Control_Remoto.Bajar_Canal()
+        elif Accion == 'Subir Volumen':
+            Control_Remoto.Subir_Volumen()
+        elif Accion == 'Bajar Volumen':
+            Control_Remoto.Bajar_Volumen()
+        elif Accion == 'Salir':
+            Control_Remoto.Salir()
+            break
+
+
+
+
+if __name__=='__main__':
+    run()
