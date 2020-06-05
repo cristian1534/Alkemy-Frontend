@@ -1,0 +1,103 @@
+
+class Food:
+        def __init__(self):
+            self.venta=0
+            self.compra=0
+            self.bebidas=0
+            self.almacen=0
+            self.carnicos=0
+            self.verduleria=0
+            self.servicios=0
+        def comienzo(self):
+            return self.online
+
+        def Venta(self):
+            global ventas
+            ventas=int(input('Ingrese la venta de hoy c/IVA: $ '))
+            self.venta =self.venta + ventas
+        def Venta_Acumulada(self):
+            print('La Venta Acumulada hasta el momento es: $ ',self.venta)
+        def Food_Cost(self):
+            Estado=self.venta - self.compra
+            print('El estado actual Ventas vs Compras es: $',Estado)
+        def Gasto_Diario(self):
+            gasto=int(input('Ingrese el Gasto de hoy: $ '))
+            proveedor=str(input('''Selecione el Proveedor: 
+                                            1- Bebidas.
+                                            2- Almacen.
+                                            3- Carnicos.
+                                            4- Verduleria.
+                                            5- Servicios.\n'''))
+            if proveedor=='1':
+               self.bebidas=self.bebidas =+ gasto
+            elif proveedor=='2':
+                self.almacen=self.almacen =+ gasto
+            elif proveedor=='3':
+                self.carnicos=self.carnicos =+ gasto
+            elif proveedor=='4':
+                self.verduleria=self.verduleria =+ gasto
+            else:
+                self.servicios=self.servicios =+ gasto
+
+            self.compra = self.compra + gasto
+        def Gasto_Acumulado(self):
+            print('El gasto acumulado hasta el momento es: $ ',self.compra)
+
+        def Gasto_Proveedor(self):
+
+            print('El gasto en Bebidas es: $',self.bebidas)
+            print('El gasto en Almacen es: $', self.almacen)
+            print('El gasto en Carnicos es: $', self.carnicos)
+            print('El gasto en Verduleria es: $', self.verduleria)
+            print('El gasto en Servicios es: $', self.servicios)
+        def Estado(self):
+            Obj=int(input('Ingrese su objetivo de venta mensual: $ '))
+            if Obj < self.venta: print('Las ventas estan Positivas en: $ ',self.venta-Obj)
+            elif self.venta == 0: print('Aun no tiene ventas ingresadas para comparar.')
+            elif Obj == self.venta: print('El Objetivo es igual a la venta.')
+            else:
+                print('Las ventas es Negativas en: $ ',self.venta)
+
+
+def run():
+    Ver=Food()
+
+    while True:
+            print('')
+            print("*-" * 30)
+            print('''GESTION PARA FAST FOOD\n''')
+            print('''
+                1- venta diaria c/IVA.
+                2- Ventas acumuladas.
+                3- Estado Ventas vs Compras.
+                4- Gasto diario.
+                5- Gasto por Proveedor. 
+                6- Gastos acumulados.
+                7- Estado Objetivo Ventas.
+                8- Salir \n''')
+            print("*-" * 30)
+            Menu=str(input('Selecione una Opcion: '))
+            print('')
+
+            if Menu == '1':
+                Ver.Venta()
+            elif Menu == '2':
+                Ver.Venta_Acumulada()
+            elif Menu =='3':
+                Ver.Food_Cost()
+            elif Menu == '4':
+                Ver.Gasto_Diario()
+            elif Menu == '5':
+                Ver.Gasto_Proveedor()
+            elif Menu =='6':
+                Ver.Gasto_Acumulado()
+            elif Menu =='7':
+                Ver.Estado()
+            elif Menu =='8':
+                print('Gracias por usar GESTION PARA FAST FOOD\n Desinged by Cristian Machuca.')
+                break
+
+
+
+if __name__=='__main__':
+    run()
