@@ -1,11 +1,11 @@
-print("\nFacturacion de Delivery de Milanesas\n")
+print("\nFacturacion de delivery de milanesas\n")
 Usu_Encargado=str(input('\nIngrese su Usuario: '))
 
 Fecha_Fact = str(input('\nFecha de facturacion: '))
 Producto = int(input('\nIngrese opcion del Producto Vendido:\n 1-Milanesa\n 2-Pizza Muzzarella\n'))
 Cantidad = int(input('Ingrese cantidad de unidades vendidas:  \n'))
 Precio = int(input('Ingrese el precio con IVA: $ '))
-Objetivo_venta = int(input('Ingrese el objetivo diario de facturacion:  $'))
+Objetivo_venta = int(input('Ingrese el objetivo de facturacion del dia:  $'))
 
 Acu_fact=Precio*Cantidad
 Dif_unid_vendidas=Objetivo_venta-Acu_fact
