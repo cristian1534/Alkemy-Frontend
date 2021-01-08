@@ -1,0 +1,167 @@
+
+import java.util.Scanner;
+
+class Practice
+{
+    static Scanner sc = new Scanner(System.in);
+    static String students[]= new String[5];
+    static String age[]= new String[5];
+    static String email[]= new String[5];
+    static int op;
+    static char option;
+
+    void data()
+    {
+            System.out.println();
+            System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
+            System.out.print("              INSERT STUDENT'S NAME.:\n");
+            System.out.println("How many students would you like to insert?: \n");
+            int n= sc.nextInt();
+            for (int i = 0; i <n; i++)
+            {
+                System.out.print("Name:\n");
+                students[i] = sc.next();
+                System.out.print("Age: \n");
+                age[i] = sc.next();
+                System.out.print("E-mail: \n");
+                email[i] = sc.next();
+                System.out.println();
+            }
+    }
+
+    void printInfo()
+    {
+
+
+        System.out.println("                 ADDED STUDENTS: ");
+        for (int i = 0; i < students.length; i++)
+        {
+            if (students[i]!= null)
+            {
+                System.out.println("----------------------------------");
+                System.out.println("- Student:" + students[i]);
+                System.out.println("- Age:" + age[i]);
+                System.out.println("- E-mail: " + email[i]);
+                System.out.println("----------------------------------");
+            }
+            else
+                {
+                    System.out.println("None student has been found in data base. Data needs to be added in data base.");
+                    break;
+                }
+        }
+
+
+
+    }
+
+    void searchBy()
+    {
+        int quantity=0;
+        int position = -1;
+        String studentaux;
+        System.out.println("Input the student's name to look for: ");
+        studentaux = sc.next();
+
+        for (int i = 0; i < students.length ; i++)
+        {
+            if (studentaux.equalsIgnoreCase(students[i]))
+            {
+                quantity = quantity + 1;
+                position = i;
+            }
+        }
+            if (position != -1)
+            {
+                System.out.println("Student/s found:(" + quantity + ")");
+                System.out.println("------------------------------------------------------");
+                System.out.println("                PERSONAL STUDENT'S INFORMATION FOUND.");
+                System.out.println("Name:" + students[position]);
+                System.out.println("Age:" + age[position]);
+                System.out.println("Email:" + email[position]);
+
+            }
+            else
+                {
+                    System.out.println("None student has found. Name given does not match with data base.");
+                }
+
+    }
+
+    void removeData()
+    {
+        int position = -1;
+        String removedStudent;
+        System.out.println("        WARNING!, YOU ARE ABOUT TO REMOVE DATA FROM THE DATA BASE.");
+        System.out.println("Insert student's name who will be removed from the data base: ");
+        removedStudent = sc.next();
+        for (int i = 0; i < students.length; i++)
+        {
+           if(removedStudent.equalsIgnoreCase(students[i]))
+           {
+               position = i;
+           }
+           if(position != -1)
+           {
+               students[position]=null;
+           }
+        }
+
+    }
+
+    public static void main(String args[])
+    {
+        Practice valor = new Practice();
+        do {
+
+            System.out.println("INSTITUTE STUDENT'S PERSONAL DATA.");
+            System.out.println();
+            System.out.println("Select any option to continue: ");
+
+            System.out.println("Menu: ");
+            System.out.println("1- Input Data.");
+            System.out.println("2- Print Data.");
+            System.out.println("3- Look for Student.");
+            System.out.println("4- Delete Data.");
+            System.out.println("0- Escape. ");
+
+            op = sc.nextInt();
+
+            if (op == 1)
+            {
+                valor.data();
+            }
+            else if (op == 2)
+            {
+                valor.printInfo();
+            }
+            else if(op == 3)
+            {
+               valor.searchBy();
+            }
+            else if(op==4)
+            {
+                valor.removeData();
+            }
+            else if(op==0)
+            {
+                break;
+            }
+            else
+                {
+                    System.out.println("You must select a valid option to continue.");
+                }
+
+
+
+            System.out.println();
+            System.out.println("Would you like to continue?: ");
+            option = sc.next().charAt(0);
+        } while (option == 'y'|| option=='Y');
+            if(option!='y' || option !='Y')
+            {
+                System.out.println("Software closing...");
+            }
+
+    }
+}
