@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 
 const NewPost = () => {
-    
+    const  { id } = useParams();
     const [ newPost, setNewPost ] = useState({ 
 
         id: Math.floor(Math.random() * 100000000),
@@ -16,37 +17,48 @@ const NewPost = () => {
     const { userId, title, body } = newPost;
 
     const postChange = e => {
-        setNewPost({ ...NewPost, 
+        setNewPost({ ...NewPost,
             [e.target.userId]: e.target.value,
             [e.target.title]: e.target.value,
             [e.target.body]: e.target.value });
       };
-
-    
+      
+        
 
     const onSubmit = async (e)=> {
         e.preventDefault();
         await axios.post("http://jsonplaceholder.typicode.com/posts", newPost)
+       
     }
+
+    const loadPost = async () => {
+        const result = await axios.get("http://jsonplaceholder.typicode.com/posts/" + id)
+        setNewPost(result.data)
+    }
+    
+    useEffect(() => {
+        loadPost();
+    }, [])
     
     return(
         <div class="container">
-             <h1>Create a new Post</h1>
+            <h1>Update your Post</h1>
            <form class="mb3-3 needs-validation" novalidate onSubmit={ e => onSubmit()}>
                 <div class="col-md-4">
-                        <label for="validationCustom01" class="form-label">UserId</label>
-                        <input 
-                         type="text" 
-                         class="form-control" 
-                         id="validationCustom01" 
-                         placeholder="UserId here..." 
-                         required 
-                         value={ userId}
-                         onChange= { e => postChange(e)}/>
-                        <div class="valid-feedback">
-                        Looks good!
-                        </div>
+                                <label for="validationCustom01" class="form-label">UserId</label>
+                                <input 
+                                type="text" 
+                                class="form-control" 
+                                id="validationCustom01" 
+                                placeholder="UserId here..." 
+                                required 
+                                value={ userId}
+                                onChange= { e => postChange(e)}/>
+                                <div class="valid-feedback">
+                                Looks good!
+                                </div>
                 </div><br/>
+               
                 <div class="col-md-4">
                         <label for="validationCustom01" class="form-label">Title</label>
                         <input 
@@ -76,7 +88,7 @@ const NewPost = () => {
                         </div>
                 </div><br/>
                 <div class="col-12">
-                    <button class="btn btn-primary"  type="submit" >Create Post</button>
+                    <button class="btn btn-primary"  type="submit" >Update Post</button>
                 </div>
            </form>
         </div>

@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 const NavBar = () => {
     return (
     <div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container">
                     <div class="container-fluid">
-                        <a class="navbar-brand" href="#">API POSTS</a>
+                        <a class="navbar-brand" href="#">ALKEMY API POSTS</a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                         </button>
@@ -18,11 +18,14 @@ const NavBar = () => {
                                 </li>
                                 <li class="nav-item">
                                 <Link class="nav-link active" aria-current="page" to="/edit">Edit</Link>
-                                </li>                   
+                                </li>  
+                                <li class="nav-item">
+                                <Link class="nav-link active" aria-current="page" to="/newPost">Create</Link>
+                                </li>                 
                             </ul>
                         </div>
                     </div>
-                    <Link class="btn btn-outline-light" to="/newpost" >Add</Link>
+                    
             </div>
         </nav>
      </div>
