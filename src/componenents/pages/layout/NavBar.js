@@ -22,6 +22,7 @@ const NavBar = () => {
                             </ul>
                         </div>
                     </div>
+                    <Link class="btn btn-outline-light" to="/newpost" >Add</Link>
             </div>
         </nav>
      </div>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const Home = () => {
@@ -22,8 +23,6 @@ const Home = () => {
               <thead class="thead-dark">
                 <tr>
                   <th scope="col">Order of Post</th>
-                  <th scope="col">UserId</th>
-                  <th scope="col">Id</th>
                   <th scope="col">Title</th>
                   <th>Action</th>
                 </tr>
@@ -31,10 +30,13 @@ const Home = () => {
               <tbody>
                 {posts.map((post, index) => (
                   <tr>
-                    <th scope="row">{index + 1}</th>
-                    <td>{post.userId}</td>
-                    <td>{post.id}</td>
+                    <th scope="row">{index + 1}</th>                 
                     <td>{post.title}</td>
+                    <td>
+                        <Link class="btn btn-primary mr-2" >View</Link>
+                        <Link class="btn btn-outline-primary mr-2" >Edit</Link>
+                        <Link class="btn btn-danger" >Delete</Link>
+                    </td>
                     
                   </tr>
                 ))}
