@@ -2,6 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const NavBar = () => {
+
+    /*
+    This Component is using Bootstrap...
+    */
     return (
     <div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">

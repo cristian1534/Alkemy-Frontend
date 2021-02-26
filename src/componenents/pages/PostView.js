@@ -14,10 +14,14 @@ const Post = () => {
     loadPost();
   }, []);
 
+  /*
+  Here this method is taking the data by post and id, 
+  then set up the state to show the post selected...
+  */
   const loadPost = async () => {
     const result = await axios.get("http://jsonplaceholder.typicode.com/posts/" + id)
     setPost(result.data)
-    console.log(post)
+    //console.log(post)
   };
   return (
     <div className="container py-4">

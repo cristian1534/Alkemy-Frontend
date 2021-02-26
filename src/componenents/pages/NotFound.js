@@ -1,5 +1,7 @@
 import React from 'react';
 
+// In case wrong url...
+
 const NotFound = () => {
     return(
         <div className="container">

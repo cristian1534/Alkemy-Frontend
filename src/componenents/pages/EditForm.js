@@ -13,7 +13,10 @@ const NewPost = () => {
         body: ""
 
     })
-
+    /*
+    This form works item like EditPost.js, but does not
+    update the data due to external API...
+    */
     const { userId, title, body } = newPost;
 
     const postChange = e => {
@@ -39,6 +42,7 @@ const NewPost = () => {
         loadPost();
     }, [])
     
+    // This form as the EditPost.js and NewPost.js, all working with validations forms required.
     return(
         <div class="container">
             <h1>Editing page</h1>

@@ -11,15 +11,19 @@ const Home = () => {
         loadPosts();
     },[])
 
+    // Pick up data from API...
     const loadPosts = async () => {
         const resault = await axios.get("http://jsonplaceholder.typicode.com/posts")
         setPosts(resault.data)
     }
+
+    // Deleting Method...
     const deletePost = async id => {
       await axios.delete(`http://jsonplaceholder.typicode.com/posts/${id}`);
       alert("The Post was deleted.")
     };
 
+    // Table creted with Bootstrap, associated with rows.
     return (
         <div className="container">
           <div className="py-4">

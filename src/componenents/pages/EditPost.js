@@ -4,6 +4,11 @@ import axios from 'axios';
 
 
 const NewPost = () => {
+
+    /*
+    This ID is taking from params so we can identificate the post
+    to edit when we click on Editing Button at Home Page...
+    */
     const  { id } = useParams();
     const [ newPost, setNewPost ] = useState({ 
 
@@ -15,7 +20,10 @@ const NewPost = () => {
     })
 
     const { userId, title, body } = newPost;
-
+    /*
+    Here we take the new data and set up the state with it
+    as an object...
+    */
     const postChange = e => {
         setNewPost({ ...NewPost,
             [e.target.userId]: e.target.value,
@@ -23,7 +31,10 @@ const NewPost = () => {
             [e.target.body]: e.target.value });
       };
       
-        
+    /*
+    Here we submit the updated post, but as this API is external
+    I just put the code...
+    */
 
     const onSubmit = async (e)=> {
         e.preventDefault();

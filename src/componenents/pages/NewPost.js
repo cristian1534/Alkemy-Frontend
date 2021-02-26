@@ -4,6 +4,7 @@ import axios from 'axios';
 
 const NewPost = () => {
     
+    // Setting state of the post as a empty object...
     const [ newPost, setNewPost ] = useState({ 
 
         id: Math.floor(Math.random() * 100000000),
@@ -12,9 +13,10 @@ const NewPost = () => {
         body: ""
 
     })
-
+    // Descontracting...
     const { userId, title, body } = newPost;
 
+    // Updating the state...
     const postChange = e => {
         setNewPost({ ...NewPost, 
             [e.target.userId]: e.target.value,
@@ -23,7 +25,10 @@ const NewPost = () => {
       };
 
     
-
+      /*
+      Here the Submit is working but does not update due to this API 
+      is external API...
+      */
     const onSubmit = async (e)=> {
         e.preventDefault();
         await axios.post("http://jsonplaceholder.typicode.com/posts", newPost)

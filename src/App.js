@@ -9,6 +9,10 @@ import NotFound from './componenents/pages/NotFound';
 import NavBar from './componenents/pages/layout/NavBar';
 import  { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+/*
+  I imported Bootstrap module to get full cover in the app.
+*/
+
 function App() {
   return (
     <div className="App">
