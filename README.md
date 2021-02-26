@@ -8,7 +8,7 @@ Run:
 
 Data:
           Documentation added to the code on pages.
-          As a external API, the methods: create, edit and delete; are set up but does not fix.
+          As a external API, the methods: create, edit and delete; are set up but do not fix.
 
 
 Cristian Machuca.
